@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :smaug, Smaug.Repo,
   adapter: Ecto.Adapters.MySQL,
-  username: "root",
-  password: "",
-  database: "smaug_test",
+  username: "smaug",
+  password: "smaug",
+  database: "smaug",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
