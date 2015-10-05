@@ -9,18 +9,35 @@ defmodule Smaug.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :admin do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_flash
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
+
 
   scope "/", Smaug do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    resources "/stories", StoryController
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", Smaug do
-  #   pipe_through :api
-  # end
+  scope "/admin", Smaug do
+    pipe_through :admin
+
+    resources "/stories", StoryController
+  end
+
+  scope "/api", Smaug do
+    pipe_through :api
+
+    resources "/stories", StoryController
+  end
 end
