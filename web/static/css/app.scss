@@ -49,4 +49,11 @@
 @import "bootstrap/utilities";
 @import "bootstrap/responsive-utilities";
 
-@import "./story";
+// Import google fonts
+@import url(https://fonts.googleapis.com/css?family=Lobster|Raleway);
+
+// Font Awesome
+@import "font-awesome/font-awesome";
+
+@import "story";
+@import "sidebar";

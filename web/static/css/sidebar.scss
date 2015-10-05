@@ -1,0 +1,46 @@
+@import "bootstrap/variables";
+
+.sidebar {
+  .menu-title {
+    padding-bottom: 9px;
+    margin: 0 0 20px;
+    border-bottom: 1px solid $gray-lighter;
+
+    h3 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 36px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 0;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  h3, li {
+    // font-family: 'Marcellus SC', serif;
+    // font-family: 'Alice', serif;
+    // font-family: 'Gentium Book Basic', serif;
+    // font-family: 'Vidaloka', serif;
+    // font-family: 'Cinzel', serif;
+  }
+
+  li {
+    color: $gray;
+    font-family: 'Raleway', sans-serif;
+    font-size: 21px;
+    text-transform: uppercase;
+    border-left: 2px solid transparent;
+    padding: 0 15px;
+    margin: 15px 0;
+    transition: border .5s ease-in-out;
+  }
+
+  li:hover {
+    border-left: 2px solid $gray;
+  }
+}

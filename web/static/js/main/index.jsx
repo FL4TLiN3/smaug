@@ -23,7 +23,6 @@ export var Main = React.createClass({
   render: function () {
     return (
       <div>
-        <div className="page-header"><h1>Featrured Stories</h1></div>
         <div className="stories row">
           { this.state.stories.map(this.renderStory) }
         </div>
