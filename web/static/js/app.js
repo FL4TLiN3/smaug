@@ -11,7 +11,7 @@
 //
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
-import "deps/phoenix_html/web/static/js/phoenix_html"
+// import "deps/phoenix_html/web/static/js/phoenix_html"
 
 // Import local files
 //
@@ -19,3 +19,8 @@ import "deps/phoenix_html/web/static/js/phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+
+
+React.render(
+  <h2 className="jumbotron">Hello from React!</h2>, document.getElementById('content')
+);
