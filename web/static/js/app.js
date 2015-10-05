@@ -20,7 +20,8 @@
 
 // import socket from "./socket"
 
+import Main from './main';
 
 React.render(
-  <h2 className="jumbotron">Hello from React!</h2>, document.getElementById('content')
+  <Main />, document.getElementById('content')
 );
