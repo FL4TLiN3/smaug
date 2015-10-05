@@ -21,7 +21,28 @@
 // import socket from "./socket"
 
 import Main from './main';
+import Sidebar from './sidebar';
+
+const App = React.createClass({
+  getInitialState: function () {
+    return {};
+  },
+
+  render: function () {
+    return (
+      <div className="row">
+        <div className="col-md-2">
+          <Sidebar />
+        </div>
+
+        <section className="col-md-10">
+          <Main />
+        </section>
+      </div>
+    );
+  }
+});
 
 React.render(
-  <Main />, document.getElementById('content')
+  <App />, document.getElementById('content')
 );
