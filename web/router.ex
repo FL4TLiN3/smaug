@@ -38,6 +38,6 @@ defmodule Smaug.Router do
   scope "/api", Smaug do
     pipe_through :api
 
-    resources "/stories", StoryController
+    resources "/stories", StoryController, only: [:index, :show]
   end
 end

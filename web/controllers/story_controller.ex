@@ -7,7 +7,7 @@ defmodule Smaug.StoryController do
 
   def index(conn, _params) do
     stories = Repo.all(Story)
-    render(conn, "index.html", stories: stories)
+    render(conn, :index, stories: stories)
   end
 
   def new(conn, _params) do
@@ -30,7 +30,7 @@ defmodule Smaug.StoryController do
 
   def show(conn, %{"id" => id}) do
     story = Repo.get!(Story, id)
-    render(conn, "show.html", story: story)
+    render(conn, :show, story: story)
   end
 
   def edit(conn, %{"id" => id}) do
