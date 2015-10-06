@@ -26,7 +26,7 @@ defmodule Smaug.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/stories", StoryController
+    resources "/stories", StoryController, only: [:index, :show]
   end
 
   scope "/admin", Smaug do
