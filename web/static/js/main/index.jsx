@@ -7,17 +7,13 @@ export var Main = React.createClass({
   },
 
   componentDidMount: function () {
-    let stories = [];
-    for (var i = 0; i < 20; i++) {
-      stories.push({
-        tag: 'Awesome Tag',
-        title: 'foo',
-        author: 'buzz',
-        cover: 'story-cover-' + (i+1) + '.jpg'
-      });
-    }
-
-    this.setState({ stories: stories });
+    $.ajax({
+      method: 'GET',
+      url: '/api/stories',
+      dataType: 'json'
+    }).done((res, status) => {
+      this.setState({ stories: res.data });
+    });
   },
 
   render: function () {
