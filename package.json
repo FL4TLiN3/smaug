@@ -1,12 +1,17 @@
 {
   "repository": {},
-  "dependencies": {
-    "babel-brunch": "^5.1.1",
-    "brunch": "^1.8.5",
-    "clean-css-brunch": ">= 1.0 < 1.8",
-    "css-brunch": ">= 1.0 < 1.8",
-    "javascript-brunch": ">= 1.0 < 1.8",
-    "sass-brunch": "^1.9.1",
-    "uglify-js-brunch": ">= 1.0 < 1.8"
+  "dependencies": {},
+  "devDependencies": {
+    "babelify": "^6.3.0",
+    "browserify": "^11.2.0",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.0.2",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.4.1",
+    "gulp-watch": "^4.3.5",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   }
 }
