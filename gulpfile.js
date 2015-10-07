@@ -34,7 +34,8 @@ gulp.task('build-vendor-js', function() {
     .pipe(sourcemaps.init())
       .pipe(order([
         "jquery.js",
-        "bootstrap.js"
+        "bootstrap.js",
+        "react.js"
       ]))
       .pipe(concat('vendor.js'))
       .pipe(uglify())
