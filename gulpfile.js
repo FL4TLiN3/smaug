@@ -3,6 +3,7 @@ var babelify = require('babelify')
   , browserify = require('browserify')
   , gulp = require('gulp')
   , autoprefixer = require('gulp-autoprefixer')
+  , dirSync = require('gulp-dir-sync')
   , minifyCss = require('gulp-minify-css')
   , sass = require('gulp-sass')
   , sourcemaps = require('gulp-sourcemaps')
@@ -12,21 +13,18 @@ var babelify = require('babelify')
   , source = require("vinyl-source-stream");
 
 gulp.task('build-js', function() {
-  browserify({
-    entries: 'web/static/js/app.jsx',
-    extensions: ['.jsx']
-  })
-  .transform(babelify)
-  .bundle()
-  .on('error', function (error) {
-    console.error(error.stack);
-  })
-  .pipe(source('app.js'))
-  .pipe(buffer())
-  .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(uglify())
-  .pipe(sourcemaps.write('./'))
-  .pipe(gulp.dest('priv/static/js'));
+  browserify({ entries: 'web/static/js/app.jsx', extensions: ['.jsx'] })
+    .transform(babelify)
+    .bundle()
+    .on('error', function (error) {
+      console.error(error.stack);
+    })
+    .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
+      .pipe(uglify())
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('priv/static/js'));
 });
 
 gulp.task('build-style', function () {
@@ -58,9 +56,14 @@ gulp.task('watch-style', function () {
   });
 });
 
+gulp.task('sync-assets', function() {
+  dirSync('web/static/assets', 'priv/static');
+});
+
 gulp.task('default', [
   'build-js',
   'build-style',
   'watch-js',
-  'watch-style'
+  'watch-style',
+  'sync-assets'
 ]);
