@@ -7,6 +7,7 @@ var babelify = require('babelify')
   , dirSync = require('gulp-dir-sync')
   , minifyCss = require('gulp-minify-css')
   , order = require("gulp-order")
+  , rename = require("gulp-rename")
   , sass = require('gulp-sass')
   , sourcemaps = require('gulp-sourcemaps')
   , uglify = require('gulp-uglify')
@@ -50,6 +51,7 @@ gulp.task('build-style', function () {
       .pipe(autoprefixer())
       .pipe(minifyCss({ advanced:false }))
     .pipe(sourcemaps.write('./'))
+    .pipe(rename('app.css'))
     .pipe(gulp.dest('priv/static/css'));
 });
 
