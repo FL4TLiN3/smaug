@@ -1,5 +1,7 @@
 
-export var Main = React.createClass({
+import Story from './story';
+
+const Main = React.createClass({
   getInitialState: function () {
     return {
       stories: []
@@ -18,30 +20,10 @@ export var Main = React.createClass({
 
   render: function () {
     return (
-      <div>
-        <div className="stories row">
-          { this.state.stories.map(this.renderStory) }
-        </div>
-      </div>
-    );
-  },
-
-  renderStory: function (story, i) {
-    let background = {
-      'backgroundImage': 'url("/images/' + story.cover + '")'
-    };
-
-    return (
-      <div className="story-col-item col-md-6" key={ i }>
-        <div className="story-wrapper">
-          <div className="story" style={ background }>
-            <div className="tag">{ story.tag }</div>
-            <div className="info">
-              <p className="author">{ story.author }</p>
-              <p className="title">{ story.title }</p>
-            </div>
-          </div>
-        </div>
+      <div className="col-md-10 stories row">
+        { this.state.stories.map(function (story, i) {
+          return <Story story={ story } key={ i } />
+        })}
       </div>
     );
   }

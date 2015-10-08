@@ -1,0 +1,11 @@
+@import "bootstrap/variables";
+
+body {
+  color: $gray-darker;
+  background-color: $gray-lighter;
+}
+
+body > .container,
+body > .container-fluid {
+  padding: 0;
+}

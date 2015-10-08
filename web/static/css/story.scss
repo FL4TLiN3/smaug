@@ -1,5 +1,5 @@
 .stories {
-  padding: 0 15px;
+  padding-right: 0;
 
   .story-col-item {
     padding: 0;
@@ -20,6 +20,8 @@
       top: 0;  bottom: 0;
       left: 0; right: 0;
       background: transparent;
+      background-size: cover;
+      cursor: pointer;
 
       .tag {
         position: absolute;

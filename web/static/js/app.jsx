@@ -1,48 +1,18 @@
-// Brunch automatically concatenates all files in your
-// watched paths. Those paths can be configured at
-// config.paths.watched in "brunch-config.js".
-//
-// However, those files will only be executed if
-// explicitly imported. The only exception are files
-// in vendor, which are never wrapped in imports and
-// therefore are always executed.
 
-// Import dependencies
-//
-// If you no longer want to use a dependency, remember
-// to also remove its path from "config.paths.watched".
-// import "deps/phoenix_html/web/static/js/phoenix_html"
-
-// Import local files
-//
-// Local files can be imported directly using relative
-// paths "./socket" or full ones "web/static/js/socket".
-
-// import socket from "./socket"
-
-import Main from './main';
+import Navbar from './navbar';
 import Sidebar from './sidebar';
+React.render(<Navbar />, document.getElementById('navbar'));
+React.render(<Sidebar />, document.getElementById('sidebar'));
 
-const App = React.createClass({
-  getInitialState: function () {
-    return {};
-  },
 
-  render: function () {
-    return (
-      <div className="row">
-        <div className="col-md-2">
-          <Sidebar />
-        </div>
+import Router from './router';
+import Main from './main';
+import Story from './story';
 
-        <section className="col-md-10">
-          <Main />
-        </section>
-      </div>
-    );
-  }
-});
+const router = new Router(document.getElementById('content'));
+router
+.route('/', Main)
+.route('/stories/:id', Story)
+.run();
 
-React.render(
-  <App />, document.getElementById('content')
-);
+

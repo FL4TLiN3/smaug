@@ -1,0 +1,37 @@
+
+const Story = React.createClass({
+  getInitialState: function () {
+    return this.props.story;
+  },
+
+  componentWillReceiveProps: function (newProps) {
+    this.setState(newProps.story);
+  },
+
+  showStory: function () {
+    location.href = '/stories/' + this.state.id;
+  },
+
+  render: function () {
+    let background = {
+      'backgroundImage': 'url("/images/' + this.state.cover + '")'
+    };
+
+    return (
+      <div className="story-col-item col-md-6">
+        <div className="story-wrapper">
+          <div className="story" style={ background } onClick={ this.showStory }>
+            <div className="tag">{ this.state.tag }</div>
+            <div className="info">
+              <p className="author">{ this.state.author }</p>
+              <p className="title">{ this.state.title }</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+});
+
+export default Story;
+

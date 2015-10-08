@@ -1,6 +1,8 @@
 {
   "repository": {},
-  "dependencies": {},
+  "dependencies": {
+    "path-to-regexp": "^1.2.1"
+  },
   "devDependencies": {
     "babelify": "^6.3.0",
     "browserify": "^11.2.0",
