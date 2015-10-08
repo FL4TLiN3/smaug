@@ -1,21 +1,21 @@
-.stories {
+.main-stories {
   padding-right: 0;
 
-  .story-col-item {
+  .main-story-col-item {
     padding: 0;
 
-    .story-wrapper {
+    .main-story-wrapper {
       position: relative;
       width: 100%;
     }
 
-    .story-wrapper:before {
+    .main-story-wrapper:before {
       content:"";
       display: block;
       padding-top: 56.25%;
     }
 
-    .story {
+    .main-story {
       position: absolute;
       top: 0;  bottom: 0;
       left: 0; right: 0;
@@ -56,3 +56,4 @@
     }
   }
 }
+

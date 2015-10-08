@@ -18,9 +18,9 @@ const Story = React.createClass({
     };
 
     return (
-      <div className="story-col-item col-md-6">
-        <div className="story-wrapper">
-          <div className="story" style={ background } onClick={ this.showStory }>
+      <div className="main-story-col-item col-md-6">
+        <div className="main-story-wrapper">
+          <div className="main-story" style={ background } onClick={ this.showStory }>
             <div className="tag">{ this.state.tag }</div>
             <div className="info">
               <p className="author">{ this.state.author }</p>
