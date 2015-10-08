@@ -18,10 +18,8 @@ export var Main = React.createClass({
 
   render: function () {
     return (
-      <div>
-        <div className="stories row">
-          { this.state.stories.map(this.renderStory) }
-        </div>
+      <div className="col-md-10 stories row">
+        { this.state.stories.map(this.renderStory) }
       </div>
     );
   },
