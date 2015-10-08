@@ -1,58 +1,22 @@
-.stories {
-  padding-right: 0;
+@import "bootstrap/variables";
 
-  .story-col-item {
-    padding: 0;
+.story {
+  background: $white-base;
 
-    .story-wrapper {
-      position: relative;
-      width: 100%;
-    }
+  .cover {
+    padding-left: 0;
+  }
 
-    .story-wrapper:before {
-      content:"";
-      display: block;
-      padding-top: 56.25%;
-    }
+  .cover img {
+    width: 100%;
+  }
 
-    .story {
-      position: absolute;
-      top: 0;  bottom: 0;
-      left: 0; right: 0;
-      background: transparent;
-      background-size: cover;
-      cursor: pointer;
+  .author {
+    margin: 45px 0 15px 0;
+    font-weight: bold;
+  }
 
-      .tag {
-        position: absolute;
-        top: 0; left: 0;
-        width: 150px;
-        padding: 0 15px;
-        line-height: 30px;
-        background: rgba(71, 80, 136, 1);
-        color: #fff;
-        font-weight: bold;
-        text-align: center;
-      }
-
-      .info {
-        position: absolute;
-        bottom: 0; left: 0;
-        width: 100%;
-        padding: 0 15px;
-        line-height: 30px;
-        background: rgba(0, 0, 0, .5);
-        color: #fff;
-
-        .author {
-          font-weight: bold;
-          font-size: 18px;
-        }
-
-        .title {
-          font-size: 36px;
-        }
-      }
-    }
+  .content {
+    margin-top: 45px;
   }
 }

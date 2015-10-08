@@ -20,7 +20,7 @@ const Main = React.createClass({
 
   render: function () {
     return (
-      <div className="col-md-10 stories row">
+      <div className="col-md-10 main-stories row">
         { this.state.stories.map(function (story, i) {
           return <Story story={ story } key={ i } />
         })}
