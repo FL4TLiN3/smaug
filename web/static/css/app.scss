@@ -50,10 +50,12 @@
 @import "bootstrap/responsive-utilities";
 
 // Import google fonts
-@import url(https://fonts.googleapis.com/css?family=Lobster|Raleway);
+@import url(https://fonts.googleapis.com/css?family=Lobster);
 
 // Font Awesome
 @import "font-awesome/font-awesome";
 
-@import "story";
+@import "global";
+@import "navbar";
 @import "sidebar";
+@import "story";
