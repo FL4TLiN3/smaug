@@ -2,7 +2,21 @@
 
 .story {
   background: $white-base;
+
   .cover {
-    text-align: center;
+    padding-left: 0;
+  }
+
+  .cover img {
+    width: 100%;
+  }
+
+  .author {
+    margin: 45px 0 15px 0;
+    font-weight: bold;
+  }
+
+  .content {
+    margin-top: 45px;
   }
 }

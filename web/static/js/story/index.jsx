@@ -16,6 +16,13 @@ const Story = React.createClass({
   },
 
   render: function () {
+    if (!this.state.id) {
+      return (
+        <div className="col-md-10 story">
+        </div>
+      );
+    }
+
     return (
       <div className="col-md-10 story">
         <div className="row">
@@ -27,7 +34,10 @@ const Story = React.createClass({
             <p className="author">{ this.state.author }</p>
             <h1 className="title">{ this.state.title }</h1>
           </header>
-          <p className="col-md-8 col-md-offset-2 content">{ this.state.description }</p>
+          <p
+            className="col-md-8 col-md-offset-2 content"
+            dangerouslySetInnerHTML={{ __html: this.state.description.replace(/(\r\n|\r|\n)/g, '<br />') }}>
+          </p>
         </div>
       </div>
     );
