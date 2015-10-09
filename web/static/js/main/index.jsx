@@ -12,7 +12,7 @@ const Main = React.createClass({
   componentDidMount: function () {
     $.ajax({
       method: 'GET',
-      url: '/api/stories',
+      url: '/api/stories?size=10&page=1',
       dataType: 'json'
     }).done((res, status) => {
       this.setState({ stories: res.data });

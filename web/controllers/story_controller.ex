@@ -5,8 +5,15 @@ defmodule Smaug.StoryController do
 
   plug :scrub_params, "story" when action in [:create, :update]
 
+  def index(conn, %{ "size" => size, "page" => page }) do
+    size = String.to_integer size
+    page = String.to_integer page
+    stories = Repo.all from Story, limit: ^size, offset: ^((page-1) * size)
+    render(conn, :index, stories: stories)
+  end
+
   def index(conn, _params) do
-    stories = Repo.all(Story)
+    stories = Repo.all from Story, limit: 10
     render(conn, :index, stories: stories)
   end
 
