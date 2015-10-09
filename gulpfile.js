@@ -12,22 +12,28 @@ var babelify = require('babelify')
   , sourcemaps = require('gulp-sourcemaps')
   , uglify = require('uglifyify')
   , watch = require('gulp-watch')
+  , watchify = require('watchify')
   , buffer = require('vinyl-buffer')
   , source = require("vinyl-source-stream");
 
-gulp.task('build-js:development', function() {
-  return browserify({
-    entries: 'web/static/js/app.jsx',
-    extensions: ['.js', '.jsx'],
-    debug: true
-  })
-  .transform(babelify)
-  .transform(uglify)
-  .bundle().on('error', function (error) { console.error(error.stack); })
+var build = function () {
+  return bundler.bundle()
+  .on('error', function (error) { console.error(error.stack); })
   .pipe(source('app.js'))
   .pipe(buffer())
   .pipe(gulp.dest('priv/static/js'));
-});
+};
+var bundler = watchify(browserify({
+  cache: {},
+  packageCache: {},
+  entries: 'web/static/js/app.jsx',
+  extensions: ['.js', '.jsx'],
+  transform: [babelify, uglify],
+  debug: true
+}));
+bundler.on('update', build);
+bundler.on('log', function (msg) { console.log(msg); });
+gulp.task('build-js:development', build);
 
 gulp.task('build-vendor-js', function() {
   return gulp.src(['web/static/vendor/jquery.js', 'web/static/vendor/bootstrap.js'])
@@ -74,7 +80,6 @@ gulp.task('default', [
   'build-js:development',
   'build-vendor-js',
   'build-style',
-  'watch-js',
   'watch-style',
   'sync-assets'
 ]);
