@@ -4,6 +4,7 @@ defmodule Smaug.StoryController do
   alias Smaug.Story
 
   plug :scrub_params, "story" when action in [:create, :update]
+  plug :put_layout, :admin
 
   def index(conn, %{ "size" => size, "page" => page }) do
     size = String.to_integer size

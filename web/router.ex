@@ -21,9 +21,8 @@ defmodule Smaug.Router do
     plug :accepts, ["json"]
   end
 
-
   scope "/", Smaug do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :browser
 
     get "/", PageController, :spa
     get "/stories/:id", PageController, :spa

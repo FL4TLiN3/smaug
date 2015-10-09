@@ -7,23 +7,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>The News</title>
+    <title>Admin | The News</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
   <body>
     <div class="container-fluid" role="main">
-      <div id="navbar"></div>
-
       <div class="row">
-        <div id="sidebar"></div>
-        <div id="content"></div>
+        <%= @inner %>
       </div>
-
-      <%= @inner %>
-
     </div>
     <script src="<%= static_path(@conn, "/js/vendor.js") %>"></script>
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
