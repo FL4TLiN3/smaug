@@ -20,13 +20,13 @@ var gulpBuild = module.exports = function (debug) {
     options.packageCache = {};
     options.debug = debug;
     bundler = watchify(browserify(options));
-    bundler.on('update', gulpBuild);
+    bundler.on('update', build);
     bundler.on('log', function (msg) { console.log(msg); });
   } else {
     bundler = browserify(options);
   }
 
-  return function () {
+  function build () {
     var outputFilename;
     if (debug) {
       outputFilename = 'app.js';
@@ -45,4 +45,6 @@ var gulpBuild = module.exports = function (debug) {
 
     return stream.pipe(gulp.dest('priv/static/js'));
   };
+
+  return build;
 };
