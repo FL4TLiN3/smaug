@@ -3,7 +3,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import pathToRegexp from 'path-to-regexp';
 
-// Export
 export default class Router {
   constructor (element) {
     this.element = element;
