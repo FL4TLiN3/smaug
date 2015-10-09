@@ -2,8 +2,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
-
 import Router from './router';
 import Navbar from './navbar';
 import Sidebar from './sidebar';

@@ -1,7 +1,6 @@
 
-var babelify = require('babelify')
-  , browserify = require('browserify')
-  , gulp = require('gulp')
+var gulp = require('gulp')
+  , gulpBuild = require('./gulp-build')
   , autoprefixer = require('gulp-autoprefixer')
   , concat = require('gulp-concat')
   , dirSync = require('gulp-dir-sync')
@@ -10,30 +9,10 @@ var babelify = require('babelify')
   , rename = require("gulp-rename")
   , sass = require('gulp-sass')
   , sourcemaps = require('gulp-sourcemaps')
-  , uglify = require('uglifyify')
-  , watch = require('gulp-watch')
-  , watchify = require('watchify')
-  , buffer = require('vinyl-buffer')
-  , source = require("vinyl-source-stream");
+  , watch = require('gulp-watch');
 
-var build = function () {
-  return bundler.bundle()
-  .on('error', function (error) { console.error(error.stack); })
-  .pipe(source('app.js'))
-  .pipe(buffer())
-  .pipe(gulp.dest('priv/static/js'));
-};
-var bundler = watchify(browserify({
-  cache: {},
-  packageCache: {},
-  entries: 'web/static/js/app.jsx',
-  extensions: ['.js', '.jsx'],
-  transform: [babelify, uglify],
-  debug: true
-}));
-bundler.on('update', build);
-bundler.on('log', function (msg) { console.log(msg); });
-gulp.task('build-js:development', build);
+gulp.task('build-js:development', gulpBuild(true));
+gulp.task('build-js:production', gulpBuild());
 
 gulp.task('build-vendor-js', function() {
   return gulp.src(['web/static/vendor/jquery.js', 'web/static/vendor/bootstrap.js'])
@@ -54,14 +33,6 @@ gulp.task('build-style', function () {
     .pipe(sourcemaps.write('./'))
     .pipe(rename('app.css'))
     .pipe(gulp.dest('priv/static/css'));
-});
-
-gulp.task('watch-js', function() {
-  watch([
-    'web/static/js/**/*.*'
-  ], function () {
-    gulp.start('build-js:development');
-  });
 });
 
 gulp.task('watch-style', function () {
