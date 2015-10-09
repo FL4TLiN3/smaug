@@ -1,8 +1,11 @@
 
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 import Navbar from './navbar';
 import Sidebar from './sidebar';
-React.render(<Navbar />, document.getElementById('navbar'));
-React.render(<Sidebar />, document.getElementById('sidebar'));
+ReactDOM.render(<Navbar />, document.getElementById('navbar'));
+ReactDOM.render(<Sidebar />, document.getElementById('sidebar'));
 
 
 import Router from './router';

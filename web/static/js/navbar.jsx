@@ -1,4 +1,6 @@
 
+import React from 'react';
+
 const Navbar = React.createClass({
   getInitialState: function () {
     return {};

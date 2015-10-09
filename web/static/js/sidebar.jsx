@@ -1,4 +1,6 @@
 
+import React from 'react';
+
 export var Sidebar = React.createClass({
   render: function () {
     return (

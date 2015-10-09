@@ -1,4 +1,6 @@
 
+import React from 'react';
+import ReactDOM from 'react-dom';
 import pathToRegexp from 'path-to-regexp';
 
 // Export
@@ -23,7 +25,7 @@ export default class Router {
         let decode = (val)  => { if (val) return decodeURIComponent(val); }
           , args = match.slice(1).map(decode);
 
-        React.render(<route.fn {...args} />, this.element);
+        ReactDOM.render(<route.fn {...args} />, this.element);
         break;
       }
     }

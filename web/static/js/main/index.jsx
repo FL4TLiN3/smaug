@@ -1,4 +1,5 @@
 
+import React from 'react';
 import Story from './story';
 
 const Main = React.createClass({

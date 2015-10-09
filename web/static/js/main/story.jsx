@@ -1,4 +1,6 @@
 
+import React from 'react';
+
 const Story = React.createClass({
   getInitialState: function () {
     return this.props.story;
