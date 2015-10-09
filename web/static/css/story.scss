@@ -5,10 +5,12 @@
 
   .cover {
     padding-left: 0;
+    text-align: center;
   }
 
   .cover img {
     width: 100%;
+    max-width: 1240px;
   }
 
   .author {
@@ -17,6 +19,7 @@
   }
 
   .content {
+    font-size: $font-size-large;
     margin-top: 45px;
   }
 }
