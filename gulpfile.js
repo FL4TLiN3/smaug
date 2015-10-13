@@ -27,11 +27,22 @@ gulp.task('build-vendor-js', function() {
 gulp.task('build-style', function () {
   return gulp.src('web/static/css/app.scss')
     .pipe(sourcemaps.init())
-      .pipe(sass().on('error', sass.logError))
-      .pipe(autoprefixer())
-      .pipe(minifyCss({ advanced:false }))
+    .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer())
+    .pipe(minifyCss({ advanced:false }))
     .pipe(sourcemaps.write('./'))
     .pipe(rename('app.css'))
+    .pipe(gulp.dest('priv/static/css'));
+});
+
+gulp.task('build-style-admin', function () {
+  return gulp.src('web/static/css_admin/app.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer())
+    .pipe(minifyCss({ advanced:false }))
+    .pipe(sourcemaps.write('./'))
+    .pipe(rename('admin.css'))
     .pipe(gulp.dest('priv/static/css'));
 });
 
@@ -40,6 +51,14 @@ gulp.task('watch-style', function () {
     'web/static/css/**/*.*'
   ], function () {
     gulp.start('build-style');
+  });
+});
+
+gulp.task('watch-style-admin', function () {
+  watch([
+    'web/static/css_admin/**/*.*'
+  ], function () {
+    gulp.start('build-style-admin');
   });
 });
 
@@ -52,5 +71,7 @@ gulp.task('default', [
   'build-vendor-js',
   'build-style',
   'watch-style',
+  'build-style-admin',
+  'watch-style-admin',
   'sync-assets'
 ]);

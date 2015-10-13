@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="<%= static_path(@conn, "/vendor/bootstrap.css") %>">
     <link rel="stylesheet" href="<%= static_path(@conn, "/vendor/AdminLTE.css") %>">
     <link rel="stylesheet" href="<%= static_path(@conn, "/vendor/skin-green.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/admin.css") %>">
   </head>
 
   <body class="hold-transition skin-green sidebar-mini">
