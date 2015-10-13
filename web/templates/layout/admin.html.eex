@@ -22,7 +22,7 @@
 
       <div class="content-wrapper">
         <!-- Main content -->
-        <section class="content">
+        <section class="admin content">
           <%= @inner %>
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->

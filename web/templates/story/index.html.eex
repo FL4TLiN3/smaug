@@ -19,9 +19,9 @@
       <td><%= story.author %></td>
       <td><%= story.cover %></td>
       <td><%= story.published_at %></td>
-      <td><%= story.description %></td>
+      <td><%= String.slice story.description, 0, 30 %></td>
 
-      <td class="text-right">
+      <td class="text-right buttons">
         <%= link "Show", to: story_path(@conn, :show, story), class: "btn btn-default btn-xs" %>
         <%= link "Edit", to: story_path(@conn, :edit, story), class: "btn btn-default btn-xs" %>
         <%= link "Delete", to: story_path(@conn, :delete, story), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
