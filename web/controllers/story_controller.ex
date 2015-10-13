@@ -39,7 +39,7 @@ defmodule Smaug.StoryController do
   end
 
   def show(conn, %{"id" => id}) do
-    story = Repo.get!(Story, id)
+    story = Repo.get!(Story, id) |> Repo.preload [:category]
     render(conn, :show, story: story)
   end
 
