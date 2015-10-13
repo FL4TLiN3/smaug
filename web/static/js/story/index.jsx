@@ -7,7 +7,6 @@ const Story = React.createClass({
   },
 
   componentDidMount: function () {
-    console.log(this.props);
     $.ajax({
       method: 'GET',
       url: '/api/stories/' + this.props[0],
