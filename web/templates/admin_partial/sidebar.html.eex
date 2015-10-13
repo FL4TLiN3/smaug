@@ -1,0 +1,10 @@
+<aside class="main-sidebar">
+  <section class="sidebar">
+    <ul class="sidebar-menu">
+      <li class="header">Data Browser</li>
+      <li>
+        <a href="/admin/stories"><i class="fa fa-book"></i> <span>Story</span></a>
+      </li>
+    </ul>
+  </section>
+</aside>
