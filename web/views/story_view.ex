@@ -14,6 +14,11 @@ defmodule Smaug.StoryView do
       title: story.title,
       author: story.author,
       cover: story.cover,
+      category: %{
+        id: story.category.id,
+        name: story.category.name,
+        order: story.category.order
+      },
       published_at: story.published_at,
       description: story.description}
   end

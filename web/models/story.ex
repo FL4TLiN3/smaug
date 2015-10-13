@@ -8,10 +8,11 @@ defmodule Smaug.Story do
     field :published_at, Ecto.DateTime
     field :description, :string
 
+    belongs_to :category, Smaug.Category
     timestamps
   end
 
-  @required_fields ~w(title author cover published_at description)
+  @required_fields ~w(title author cover published_at description category_id)
   @optional_fields ~w()
 
   @doc """

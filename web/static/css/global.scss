@@ -4,3 +4,11 @@ body > .container,
 body > .container-fluid {
   padding: 0;
 }
+
+.row {
+  margin: 0;
+}
+
+a, a:active, a:hover, a:visited {
+  color: $gray;
+}
