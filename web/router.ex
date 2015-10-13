@@ -31,6 +31,7 @@ defmodule Smaug.Router do
   scope "/admin", Smaug do
     pipe_through :admin
 
+    get "/", PageController, :spa
     resources "/stories", StoryController
   end
 
