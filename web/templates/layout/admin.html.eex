@@ -9,9 +9,9 @@
 
     <title>Admin | The News</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<%= static_path(@conn, "/vendor/bootstrap.css") %>">
-    <link rel="stylesheet" href="<%= static_path(@conn, "/vendor/AdminLTE.css") %>">
-    <link rel="stylesheet" href="<%= static_path(@conn, "/vendor/skin-green.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/bootstrap.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/AdminLTE.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/skin-green.css") %>">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/admin.css") %>">
   </head>
 
@@ -29,8 +29,8 @@
 
       <%= render Smaug.AdminPartialView, "sidebar.html" %>
     </div>
-    <script src="<%= static_path(@conn, "/vendor/jquery.js") %>"></script>
-    <script src="<%= static_path(@conn, "/vendor/bootstrap.js") %>"></script>
-    <script src="<%= static_path(@conn, "/vendor/AdminLTE.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/jquery.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/bootstrap.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/AdminLTE.js") %>"></script>
   </body>
 </html>
