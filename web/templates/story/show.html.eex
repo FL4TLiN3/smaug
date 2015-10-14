@@ -3,6 +3,11 @@
 <ul>
 
   <li>
+    <strong>Category:</strong>
+    <%= @story.category.name %>
+  </li>
+
+  <li>
     <strong>Title:</strong>
     <%= @story.title %>
   </li>

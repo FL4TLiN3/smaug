@@ -3,6 +3,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Category</th>
       <th>Title</th>
       <th>Author</th>
       <th>Cover</th>
@@ -15,6 +16,7 @@
   <tbody>
 <%= for story <- @stories do %>
     <tr>
+      <td><%= story.category.name %></td>
       <td><%= story.title %></td>
       <td><%= story.author %></td>
       <td><%= story.cover %></td>
