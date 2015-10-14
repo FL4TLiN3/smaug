@@ -14,8 +14,8 @@ defmodule Smaug.User do
     timestamps
   end
 
-  @required_fields ~w(email name password facebook_access_token access_secret access_secret_generated_at access_token access_token_expires_at)
-  @optional_fields ~w()
+  @required_fields ~w(email)
+  @optional_fields ~w(name password facebook_access_token access_secret access_secret_generated_at access_token access_token_expires_at)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
