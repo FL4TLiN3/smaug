@@ -46,6 +46,6 @@ defmodule Smaug.Story do
   end
 
   def paging(query, _params) do
-    from s in query, limit: 10, offset: 0
+    from s in query, limit: 20, offset: 0
   end
 end
