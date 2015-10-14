@@ -1,9 +1,22 @@
 
 import React from 'react';
+import Modal from './ui/modal';
+import Login from './login';
 
 const Navbar = React.createClass({
   getInitialState: function () {
     return {};
+  },
+
+  showLoginModal: function () {
+    Modal.show(
+      Login,
+      { modal: true },
+      {
+        className: 'login',
+        top: 100
+      }
+    );
   },
 
   render: function () {
@@ -21,9 +34,8 @@ const Navbar = React.createClass({
           </div>
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul className="nav navbar-nav">
-              <li><a href="#">About</a></li>
-              <li><a href="#">Contact</a></li>
+            <ul className="nav navbar-nav navbar-right">
+              <li><a onClick={ this.showLoginModal }>Login</a></li>
             </ul>
           </div>
         </div>
