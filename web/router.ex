@@ -37,6 +37,7 @@ defmodule Smaug.Router do
     get "/", PageController, :spa
     resources "/stories", StoryController
     resources "/categories", CategoryController
+    resources "/users", UserController
   end
 
   scope "/api", Smaug do
