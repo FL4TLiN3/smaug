@@ -30,7 +30,7 @@ const Navbar = React.createClass({
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="/">The News</a>
+            <a className="navbar-brand logo" href="/"><span className="the">The</span>News</a>
           </div>
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

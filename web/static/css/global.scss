@@ -12,3 +12,16 @@ body > .container-fluid {
 a, a:active, a:hover, a:visited {
   color: $gray;
 }
+
+.logo {
+  font-weight: lighter;
+  text-transform: uppercase;
+  .the {
+    font-weight: bold;
+  }
+}
+
+.navbar-brand {
+  font-size: 24px;
+  font-weight: lighter;
+}
