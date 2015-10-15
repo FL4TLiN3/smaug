@@ -7,6 +7,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <%= if @user do %>
+      <meta name="tn:login" content="<%= @user.id %>">
+    <% end %>
+
     <title>THE NEWS</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>

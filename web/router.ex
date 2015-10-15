@@ -27,6 +27,8 @@ defmodule Smaug.Router do
     pipe_through :browser
 
     get  "/", PageController, :spa
+    get  "/login", AuthController, :show_login
+    post "/login", AuthController, :login
     get  "/logout", AuthController, :logout
     get  "/signup", AuthController, :new
     post "/signup", AuthController, :create

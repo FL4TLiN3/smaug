@@ -6,9 +6,29 @@ defmodule Smaug.AuthController do
 
   plug :put_layout, { Smaug.LayoutView, :nosidebar }
 
+  def show_login(conn, _params) do
+    changeset = User.changeset(%User{})
+    render(conn, :login, changeset: changeset)
+  end
+
+  def login(conn, %{"user" => %{"email" => email, "password" => password} = params}) do
+    conf = Mix.Config.read!("config/config.exs")
+    password = :crypto.hash(:sha256, [password, conf[:smaug][:hash_salt]]) |> Base.encode16
+    user = Repo.one(from u in User, where: u.email == ^email and u.password == ^password)
+    if user do
+      conn
+      |> put_session(:user, user)
+      |> redirect(to: "/")
+    else
+      changeset = User.changeset(%User{}, params)
+      render(conn, :new, changeset: changeset)
+    end
+  end
+
   def logout(conn, _params) do
-    clear_session(conn)
-    redirect conn, to: "/"
+    conn
+    |> clear_session
+    |> redirect to: page_path(conn, :spa)
   end
 
   def new(conn, _params) do
@@ -18,7 +38,6 @@ defmodule Smaug.AuthController do
 
   def create(conn, %{"user" => user_params}) do
     changeset = User.changeset(%User{}, user_params)
-    user = Repo.one(from u in User, where: u.email == ^user_params.email)
     case Repo.insert(changeset) do
       {:ok, user} ->
         conn
