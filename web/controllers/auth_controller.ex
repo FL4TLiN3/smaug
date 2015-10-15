@@ -7,8 +7,8 @@ defmodule Smaug.AuthController do
   plug :put_layout, { Smaug.LayoutView, :nosidebar }
 
   def show_login(conn, _params) do
-    changeset = User.changeset(%User{})
-    render(conn, :login, changeset: changeset)
+    conn
+    |> render(:login, changeset: User.changeset(%User{}))
   end
 
   def login(conn, %{"user" => %{"email" => email, "password" => password} = params}) do
@@ -20,8 +20,8 @@ defmodule Smaug.AuthController do
       |> put_session(:user, user)
       |> redirect(to: "/")
     else
-      changeset = User.changeset(%User{}, params)
-      render(conn, :new, changeset: changeset)
+      conn
+      |> render(:login, changeset: User.changeset(%User{}, params))
     end
   end
 
@@ -32,12 +32,12 @@ defmodule Smaug.AuthController do
   end
 
   def new(conn, _params) do
-    changeset = User.changeset(%User{})
-    render(conn, :new, changeset: changeset)
+    conn
+    |> render(:new, changeset: User.changeset(%User{}))
   end
 
-  def create(conn, %{"user" => user_params}) do
-    changeset = User.changeset(%User{}, user_params)
+  def create(conn, %{"user" => params}) do
+    changeset = User.changeset(%User{}, params)
     case Repo.insert(changeset) do
       {:ok, user} ->
         conn
@@ -45,32 +45,29 @@ defmodule Smaug.AuthController do
         |> put_session(:user, user)
         |> redirect(to: auth_path(conn, :profile))
       {:error, changeset} ->
-        render(conn, :new, changeset: changeset)
+        conn
+        |> render(:new, changeset: changeset)
     end
   end
 
   def profile(conn, _params) do
-    case get_session(conn, :user) do
+    case user = conn |> get_session :user do
       %User{id: id} ->
-        changeset = UserProfile.changeset(%UserProfile{}, %{user_id: id})
+        conn
+        |> render(:profile, changeset: UserProfile.changeset(%UserProfile{}, %{user_id: id}))
     end
-    render(conn, :profile, changeset: changeset)
   end
 
   def update_profile(conn, %{"user_profile" => user_profile_params}) do
-
-    case get_session(conn, :user) do
-      %User{id: id} ->
-        changeset = UserProfile.changeset(%UserProfile{}, user_profile_params)
-    end
-
+    changeset = UserProfile.changeset(%UserProfile{}, user_profile_params)
     case Repo.insert(changeset) do
       {:ok, _user_profile} ->
         conn
         |> put_flash(:info, "UserProfile created successfully.")
-        |> redirect(to: auth_path(conn, :new))
+        |> redirect(to: page_path(conn, :spa))
       {:error, changeset} ->
-        render(conn, :profile, changeset: changeset)
+        conn
+        |> render(:profile, changeset: changeset)
     end
   end
 
