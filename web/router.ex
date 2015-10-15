@@ -26,13 +26,14 @@ defmodule Smaug.Router do
   scope "/", Smaug do
     pipe_through :browser
 
-    get "/", PageController, :spa
-    get "/signup", SignupController, :index
-    post "/signup", SignupController, :create
-    get "/signup/profile", SignupController, :profile
-    post "/signup/profile", SignupController, :update_profile
-    get "/stories", PageController, :spa
-    get "/stories/:id", PageController, :spa
+    get  "/", PageController, :spa
+    get  "/logout", AuthController, :logout
+    get  "/signup", AuthController, :new
+    post "/signup", AuthController, :create
+    get  "/signup/profile", AuthController, :profile
+    post "/signup/profile", AuthController, :update_profile
+    get  "/stories", PageController, :spa
+    get  "/stories/:id", PageController, :spa
   end
 
   scope "/admin", Smaug do
