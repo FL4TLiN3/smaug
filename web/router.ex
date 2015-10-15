@@ -27,6 +27,7 @@ defmodule Smaug.Router do
     pipe_through :browser
 
     get "/", PageController, :spa
+    get "/signup", SignupController, :index
     get "/stories", PageController, :spa
     get "/stories/:id", PageController, :spa
   end
