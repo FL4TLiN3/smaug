@@ -26,5 +26,16 @@ defmodule Smaug.User do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+    |> crypto(params)
   end
+
+  def crypto(model, %{"password" => password}) do
+    conf = Mix.Config.read!("config/config.exs")
+    model
+    |> Ecto.Changeset.put_change(
+      :password,
+      :crypto.hash(:sha256, [password, conf[:smaug][:hash_salt]]) |> Base.encode16)
+  end
+
+  def crypto(model, _params), do: model
 end
