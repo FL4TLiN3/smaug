@@ -29,6 +29,8 @@ defmodule Smaug.Router do
     get "/", PageController, :spa
     get "/signup", SignupController, :index
     post "/signup", SignupController, :create
+    get "/signup/profile", SignupController, :profile
+    post "/signup/profile", SignupController, :update_profile
     get "/stories", PageController, :spa
     get "/stories/:id", PageController, :spa
   end
