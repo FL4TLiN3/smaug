@@ -30,6 +30,8 @@ defmodule Smaug.Router do
     get  "/login", AuthController, :show_login
     post "/login", AuthController, :login
     get  "/logout", AuthController, :logout
+    get  "/auth/github", AuthController, :auth_github
+    get  "/auth/callback/github", AuthController, :auth_callback_github
     get  "/signup", AuthController, :new
     post "/signup", AuthController, :create
     get  "/signup/profile", AuthController, :profile

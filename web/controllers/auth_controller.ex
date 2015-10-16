@@ -1,6 +1,7 @@
 defmodule Smaug.AuthController do
   use Smaug.Web, :controller
 
+  alias Smaug.Auth.GitHub
   alias Smaug.User
   alias Smaug.UserProfile
 
@@ -48,6 +49,23 @@ defmodule Smaug.AuthController do
         conn
         |> render(:new, changeset: changeset)
     end
+  end
+
+  def auth_github(conn, _params) do
+    conn
+    |> redirect external: GitHub.authorize_url!
+  end
+
+  def auth_callback_github(conn, %{"code" => code}) do
+    token = GitHub.get_token!(code: code)
+    user = OAuth2.AccessToken.get!(token, "/user")
+
+    IO.inspect user
+
+    conn
+    # |> put_session(:current_user, user)
+    # |> put_session(:access_token, token.access_token)
+    |> redirect(to: "/")
   end
 
   def profile(conn, _params) do
