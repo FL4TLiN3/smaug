@@ -5,6 +5,7 @@ defmodule Smaug.User do
     field :email, :string
     field :name, :string
     field :password, :string
+    field :github_access_token, :string
     field :facebook_access_token, :string
     field :access_secret, :string
     field :access_secret_generated_at, Ecto.DateTime
@@ -15,7 +16,7 @@ defmodule Smaug.User do
   end
 
   @required_fields ~w(email)
-  @optional_fields ~w(name password facebook_access_token access_secret access_secret_generated_at access_token access_token_expires_at)
+  @optional_fields ~w(name password github_access_token facebook_access_token access_secret access_secret_generated_at access_token access_token_expires_at)
 
   @doc """
   Creates a changeset based on the `model` and `params`.

@@ -59,13 +59,22 @@ defmodule Smaug.AuthController do
   def auth_callback_github(conn, %{"code" => code}) do
     token = GitHub.get_token!(code: code)
     user = OAuth2.AccessToken.get!(token, "/user")
+    params = %{
+      "email": user["email"],
+      "github_access_token": token.access_token
+    }
 
-    IO.inspect user
-
-    conn
-    # |> put_session(:current_user, user)
-    # |> put_session(:access_token, token.access_token)
-    |> redirect(to: "/")
+    changeset = User.changeset(%User{}, params)
+    case Repo.insert(changeset) do
+      {:ok, user} ->
+        conn
+        |> put_flash(:info, "User created successfully.")
+        |> put_session(:user, user)
+        |> redirect(to: auth_path(conn, :profile))
+      {:error, changeset} ->
+        conn
+        |> render(:new, changeset: changeset)
+    end
   end
 
   def profile(conn, _params) do
