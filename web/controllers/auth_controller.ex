@@ -41,6 +41,10 @@ defmodule Smaug.AuthController do
     changeset = User.changeset(%User{}, params)
     case Repo.insert(changeset) do
       {:ok, user} ->
+        Repo.insert! %UserProfile{
+          "user_id": user.id
+        }
+
         conn
         |> put_flash(:info, "User created successfully.")
         |> put_session(:user, user)
