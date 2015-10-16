@@ -19,7 +19,7 @@
 
         <div class="form-group">
           <%= label f, :user_id, "User Id", class: "control-label" %>
-          <div id="user_id"><%= @changeset.params["user_id"] %></div>
+          <div id="user_id"><%= @changeset.model.user_id %></div>
           <%= hidden_input f, :user_id %>
         </div>
 

@@ -91,8 +91,12 @@ defmodule Smaug.AuthController do
   def profile(conn, _params) do
     case user = conn |> get_session :user do
       %User{id: id} ->
+        user_profile = Repo.one(from up in UserProfile, where: up.user_id == ^id)
+        changeset = UserProfile.changeset(user_profile)
+        IO.inspect changeset
+
         conn
-        |> render(:profile, changeset: UserProfile.changeset(%UserProfile{}, %{user_id: id}))
+        |> render(:profile, changeset: changeset)
     end
   end
 
