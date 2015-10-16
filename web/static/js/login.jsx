@@ -4,8 +4,9 @@ import React from 'react';
 const Login = React.createClass({
   getInitialState: function () {
     return {
-      email: '',
-      password: ''
+      'user[email]': '',
+      'user[password]': '',
+      csrfToken: this.props.csrfToken
     };
   },
 
@@ -46,11 +47,11 @@ const Login = React.createClass({
           <div className="login-body">
             <form id="login-form" action="/login" method="post">
               <div className="form-group">
-                <label for="email">Email</label>
+                <label htmlFor="email">Email</label>
                 <input
                   id="email"
                   type="email"
-                  name="email"
+                  name="user[email]"
                   className="form-control"
                   placeholder="Email"
                   value={ this.state.screenName }
@@ -59,17 +60,19 @@ const Login = React.createClass({
               </div>
 
               <div className="form-group">
-                <label for="password">Password</label>
+                <label htmlFor="password">Password</label>
                 <input
                   id="password"
                   type="password"
-                  name="password"
+                  name="user[password]"
                   className="form-control"
                   placeholder="Password"
                   value={ this.state.password }
                   onChange={ this.handleChange }
                   onKeyDown={ this.handleKeyDown } />
               </div>
+
+              <input type="hidden" name="_csrf_token" value={ this.state.csrfToken } />
 
               <button type="submit" className="btn btn-default">
                 <i className="fa fa-sign-in"></i> GO

@@ -5,13 +5,26 @@ import Login from './login';
 
 const Navbar = React.createClass({
   getInitialState: function () {
-    return {};
+    let authorized = false
+      , csrfToken;
+    Array.prototype.forEach.call(document.getElementsByTagName('meta'), function (meta) {
+      if (meta.name == 'tn:login') {
+        authorized = true;
+      }
+      if (meta.name == 'tn:csrf-token') {
+        csrfToken = meta.content;
+      }
+    });
+    return {
+      authorized: authorized,
+      csrfToken: csrfToken
+    };
   },
 
   showLoginModal: function () {
     Modal.show(
       Login,
-      { modal: true },
+      { csrfToken: this.state.csrfToken },
       {
         className: 'login',
         top: 100
@@ -20,6 +33,12 @@ const Navbar = React.createClass({
   },
 
   render: function () {
+    let loginout;
+    if (this.state.authorized) {
+      loginout = <a href="/logout">Logout</a>;
+    } else {
+      loginout = <a onClick={ this.showLoginModal }>Login</a>;
+    }
     return (
       <nav className="navbar navbar-inverse">
         <div className="container-fluid">
@@ -35,7 +54,7 @@ const Navbar = React.createClass({
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav navbar-right">
-              <li><a onClick={ this.showLoginModal }>Login</a></li>
+              <li>{ loginout }</li>
             </ul>
           </div>
         </div>

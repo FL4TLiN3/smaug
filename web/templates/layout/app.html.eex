@@ -10,6 +10,7 @@
     <%= if @user do %>
       <meta name="tn:login" content="<%= @user.id %>">
     <% end %>
+    <meta name="tn:csrf-token" content="<%= Plug.CSRFProtection.get_csrf_token %>">
 
     <title>THE NEWS</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
