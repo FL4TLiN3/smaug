@@ -1,6 +1,7 @@
 defmodule Smaug.AuthGithubController do
   use Smaug.Web, :controller
 
+  alias Smaug.Credential
   alias Smaug.Auth.GitHub
   alias Smaug.User
   alias Smaug.UserProfile
@@ -33,17 +34,22 @@ defmodule Smaug.AuthGithubController do
   end
 
   defp signup(conn, token, github_user) do
-    user = Repo.insert! User.changeset(%User{}, %{
-      "email": github_user["email"],
-      "github_access_token": token.access_token
-    })
+    user = Repo.insert! %User{
+      email: github_user["email"],
+      github_access_token: token.access_token}
+
+    credentials = Credential.get_credentials user
+    Repo.update! %{user |
+      access_secret: credentials.access_secret,
+      access_secret_generated_at: credentials.access_secret_generated_at,
+      access_token: credentials.access_token,
+      access_token_expires_at: credentials.access_token_expires_at}
 
     Repo.insert! %UserProfile{
-      "user_id": user.id,
-      "name": github_user["name"],
-      "location": github_user["location"],
-      "bio": github_user["bio"]
-    }
+      user_id: user.id,
+      name: github_user["name"],
+      location: github_user["location"],
+      bio: github_user["bio"]}
 
     conn
     |> put_flash(:info, "User created successfully.")
