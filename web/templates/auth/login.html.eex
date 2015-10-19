@@ -5,6 +5,12 @@
         <h1 class="text-center">Welcome Back</h1>
       </div>
 
+      <a href="/auth/github" class="btn btn-block btn-social btn-github">
+        <i class="fa fa-github"></i> Log in with GitHub
+      </a>
+
+      <div class="or">OR</div>
+
       <%= form_for @changeset, auth_path(@conn, :login), fn f -> %>
         <%= if @changeset.action do %>
           <div class="alert alert-danger">
