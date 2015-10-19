@@ -29,7 +29,6 @@ gulp.task('build-style', function () {
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
-    .pipe(minifyCss({ advanced:false }))
     .pipe(sourcemaps.write('./'))
     .pipe(rename('app.css'))
     .pipe(gulp.dest('priv/static/css'));
@@ -40,7 +39,6 @@ gulp.task('build-style-admin', function () {
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
-    .pipe(minifyCss({ advanced:false }))
     .pipe(sourcemaps.write('./'))
     .pipe(rename('admin.css'))
     .pipe(gulp.dest('priv/static/css'));
