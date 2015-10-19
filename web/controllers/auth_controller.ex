@@ -2,9 +2,9 @@ defmodule Smaug.AuthController do
   use Smaug.Web, :controller
   import Ecto.Changeset
 
+  alias Smaug.Credential
   alias Smaug.User
   alias Smaug.UserProfile
-  alias Smaug.Credential
 
   plug :put_layout, { Smaug.LayoutView, :nosidebar }
 
