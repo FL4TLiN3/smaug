@@ -45,6 +45,13 @@ const Login = React.createClass({
         </div>
         <div className="modal-body">
           <div className="login-body">
+
+            <a href="/auth/github" className="btn btn-block btn-social btn-github">
+              <i className="fa fa-github"></i> Log in with GitHub
+            </a>
+
+            <div className="or">OR</div>
+
             <form id="login-form" action="/login" method="post">
               <div className="form-group">
                 <label htmlFor="email">Email</label>
