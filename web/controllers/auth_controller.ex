@@ -1,8 +1,12 @@
 defmodule Smaug.AuthController do
   use Smaug.Web, :controller
+  import Ecto.Changeset
 
   alias Smaug.User
   alias Smaug.UserProfile
+  alias Timex.Date
+  alias Timex.DateFormat
+  alias Timex.Time
 
   plug :put_layout, { Smaug.LayoutView, :nosidebar }
 
@@ -38,11 +42,33 @@ defmodule Smaug.AuthController do
 
   def create(conn, %{"user" => params}) do
     changeset = User.changeset(%User{}, params)
+
     case Repo.insert(changeset) do
       {:ok, user} ->
-        Repo.insert! %UserProfile{
-          "user_id": user.id
+        conf = Mix.Config.read!("config/config.exs")
+        access_secret_generated_at = Date.now
+        access_token_expires_at = access_secret_generated_at |> Date.add(Time.to_timestamp(30, :days))
+
+        access_secret =
+          :crypto.hash(
+            :sha256,
+            [user.id, access_secret_generated_at |> DateFormat.format!("{ISO}"), conf[:smaug][:hash_salt]])
+          |> Base.encode16
+
+        access_token =
+          :crypto.hash(
+            :sha256,
+            [access_secret, access_token_expires_at |> DateFormat.format!("{ISO}"), conf[:smaug][:hash_salt]])
+          |> Base.encode16
+
+        Repo.update! %{user |
+          access_secret: access_secret,
+          access_secret_generated_at: access_secret_generated_at,
+          access_token: access_token,
+          access_token_expires_at: access_token_expires_at
         }
+
+        Repo.insert! %UserProfile{user_id: user.id}
 
         conn
         |> put_flash(:info, "User created successfully.")
