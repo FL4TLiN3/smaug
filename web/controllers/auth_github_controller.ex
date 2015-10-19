@@ -1,7 +1,7 @@
 defmodule Smaug.AuthGithubController do
   use Smaug.Web, :controller
 
-  alias Smaug.Credential
+  alias Smaug.Auth.Credential
   alias Smaug.Auth.GitHub
   alias Smaug.User
   alias Smaug.UserProfile

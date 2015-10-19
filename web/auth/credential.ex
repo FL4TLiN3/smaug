@@ -1,4 +1,4 @@
-defmodule Smaug.Credential do
+defmodule Smaug.Auth.Credential do
 
   alias Smaug.User
   alias Timex.Date

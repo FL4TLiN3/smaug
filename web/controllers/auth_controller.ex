@@ -2,7 +2,7 @@ defmodule Smaug.AuthController do
   use Smaug.Web, :controller
   import Ecto.Changeset
 
-  alias Smaug.Credential
+  alias Smaug.Auth.Credential
   alias Smaug.User
   alias Smaug.UserProfile
 
