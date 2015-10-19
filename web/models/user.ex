@@ -8,9 +8,9 @@ defmodule Smaug.User do
     field :github_access_token, :string
     field :facebook_access_token, :string
     field :access_secret, :string
-    field :access_secret_generated_at, Ecto.DateTime
+    field :access_secret_generated_at, Timex.Ecto.DateTime
     field :access_token, :string
-    field :access_token_expires_at, Ecto.DateTime
+    field :access_token_expires_at, Timex.Ecto.DateTime
 
     timestamps
   end
