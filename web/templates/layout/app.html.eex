@@ -9,7 +9,6 @@
 
     <%= if @user do %>
       <meta name="tn:login" content="<%= @user.id %>">
-      <meta name="tn:access-token" content="<%= @user.access_token %>">
     <% end %>
     <meta name="tn:csrf-token" content="<%= Plug.CSRFProtection.get_csrf_token %>">
 
