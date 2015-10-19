@@ -4,9 +4,7 @@ defmodule Smaug.AuthController do
 
   alias Smaug.User
   alias Smaug.UserProfile
-  alias Timex.Date
-  alias Timex.DateFormat
-  alias Timex.Time
+  alias Smaug.Credential
 
   plug :put_layout, { Smaug.LayoutView, :nosidebar }
 
@@ -45,29 +43,13 @@ defmodule Smaug.AuthController do
 
     case Repo.insert(changeset) do
       {:ok, user} ->
-        conf = Mix.Config.read!("config/config.exs")
-        access_secret_generated_at = Date.now
-        access_token_expires_at = access_secret_generated_at |> Date.add(Time.to_timestamp(30, :days))
-
-        access_secret =
-          :crypto.hash(
-            :sha256,
-            [user.id, access_secret_generated_at |> DateFormat.format!("{ISO}"), conf[:smaug][:hash_salt]])
-          |> Base.encode16
-
-        access_token =
-          :crypto.hash(
-            :sha256,
-            [access_secret, access_token_expires_at |> DateFormat.format!("{ISO}"), conf[:smaug][:hash_salt]])
-          |> Base.encode16
+        credentials = Credential.get_credentials user
 
         Repo.update! %{user |
-          access_secret: access_secret,
-          access_secret_generated_at: access_secret_generated_at,
-          access_token: access_token,
-          access_token_expires_at: access_token_expires_at
-        }
-
+          access_secret: credentials.access_secret,
+          access_secret_generated_at: credentials.access_secret_generated_at,
+          access_token: credentials.access_token,
+          access_token_expires_at: credentials.access_token_expires_at}
         Repo.insert! %UserProfile{user_id: user.id}
 
         conn
