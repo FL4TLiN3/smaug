@@ -45,7 +45,7 @@ defmodule Smaug.AuthController do
       {:ok, user} ->
         credentials = Credential.get_credentials user
 
-        Repo.update! %{user |
+        user = Repo.update! %{user |
           access_secret: credentials.access_secret,
           access_secret_generated_at: credentials.access_secret_generated_at,
           access_token: credentials.access_token,
