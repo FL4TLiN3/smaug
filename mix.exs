@@ -36,7 +36,9 @@ defmodule Smaug.Mixfile do
      {:phoenix_html, "~> 2.1"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:cowboy, "~> 1.0"},
-     {:oauth2, "~> 0.3"}]
+     {:oauth2, "~> 0.3"},
+     {:timex, "~> 0.19.2"},
+     {:timex_ecto, "~> 0.5.0"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.
