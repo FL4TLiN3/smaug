@@ -44,7 +44,7 @@ const Login = React.createClass({
           <h4 className="modal-title">Login</h4>
         </div>
         <div className="modal-body">
-          <div className="login-body">
+          <div className="login">
 
             <a href="/auth/github" className="btn btn-block btn-social btn-github">
               <i className="fa fa-github"></i> Log in with GitHub
@@ -81,20 +81,24 @@ const Login = React.createClass({
 
               <input type="hidden" name="_csrf_token" value={ this.state.csrfToken } />
 
-              <button type="submit" className="btn btn-default">
-                <i className="fa fa-sign-in"></i> GO
-              </button>
-
-              <p className="forget-password">
-                <a href="#"><i className="fa fa-key"></i> パスワードを忘れた方</a>
-              </p>
+              <ul>
+                <li>
+                  <a href="/forgot_password">
+                    <i className="fa fa-key"></i> パスワードを忘れた方
+                  </a>
+                </li>
+                <li>
+                  <button type="submit" className="btn btn-primary">
+                    <i className="fa fa-sign-in"></i> GO
+                  </button>
+                </li>
+                <li>
+                  <a className="btn btn-success" href="/signup">
+                    <i className="fa fa-user-plus"></i> アカウント登録
+                  </a>
+                </li>
+              </ul>
             </form>
-
-            <div className="form-group signup">
-              <a className="btn btn-default" href="/signup">
-                <i className="fa fa-user-plus"></i> アカウント登録
-              </a>
-            </div>
           </div>
         </div>
       </div>
