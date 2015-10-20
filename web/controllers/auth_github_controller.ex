@@ -41,9 +41,9 @@ defmodule Smaug.AuthGithubController do
     credentials = Credential.get_credentials user
     user = Repo.update! %{user |
       access_secret: credentials.access_secret,
-      access_secret_generated_at: credentials.access_secret_generated_at,
+      access_secret_generated_at: credentials.access_secret_generated_at |> Ecto.DateTime.from_erl,
       access_token: credentials.access_token,
-      access_token_expires_at: credentials.access_token_expires_at}
+      access_token_expires_at: credentials.access_token_expires_at |> Ecto.DateTime.from_erl}
 
     Repo.insert! %UserProfile{
       user_id: user.id,
