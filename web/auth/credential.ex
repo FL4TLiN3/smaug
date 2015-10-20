@@ -1,9 +1,7 @@
 defmodule Smaug.Auth.Credential do
 
+  use Timex
   alias Smaug.User
-  alias Timex.Date
-  alias Timex.DateFormat
-  alias Timex.Time
 
   def get_credentials(user) do
     secret = get_access_secret user

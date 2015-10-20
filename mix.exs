@@ -19,7 +19,7 @@ defmodule Smaug.Mixfile do
   def application do
     [mod: {Smaug, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :mariaex, :oauth2]]
+                    :phoenix_ecto, :mariaex, :oauth2, :tzdata]]
   end
 
   # Specifies which paths to compile per environment.
