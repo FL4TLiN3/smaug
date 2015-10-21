@@ -2,7 +2,15 @@ defmodule Smaug.StoryControllerTest do
   use Smaug.ConnCase
 
   alias Smaug.Story
-  @valid_attrs %{author: "some content", cover: "some content", description: "some content", published_at: "2010-04-17 14:00:00", title: "some content"}
+
+  @valid_attrs %{
+    title: "今まで続かなかった、ランニングを日課にする「5つの方法」",
+    author: "中野ジェームズ修一",
+    cover: "story-cover-1.jpg",
+    published_at: "2015-10-01 00:00:00",
+    description: "some content",
+    category_id: 1
+  }
   @invalid_attrs %{}
 
   setup do
@@ -32,7 +40,7 @@ defmodule Smaug.StoryControllerTest do
   end
 
   test "shows chosen resource", %{conn: conn} do
-    story = Repo.insert! %Story{}
+    story = Repo.insert! %Story{category_id: 1}
     conn = get conn, story_path(conn, :show, story)
     assert html_response(conn, 200) =~ "Show story"
   end
