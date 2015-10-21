@@ -3,11 +3,11 @@ defmodule Smaug.PageControllerTest do
 
   test "GET /" do
     conn = get conn(), "/"
-    assert html_response(conn, 200) =~ "The News"
+    assert html_response(conn, 200) =~ "THE NEWS"
   end
 
   test "GET /stories/:id" do
     conn = get conn(), "/stories/1"
-    assert html_response(conn, 200) =~ "The News"
+    assert html_response(conn, 200) =~ "THE NEWS"
   end
 end
