@@ -28,4 +28,16 @@ config :phoenix, :generators,
   migration: true,
   binary_id: false
 
-config :smaug, hash_salt: "4368458F0ECDA1D2B84D19A8E5391DE13E918203C5E94F79345C97F58E98758D"
+config :smaug,
+  hash_salt: "4368458F0ECDA1D2B84D19A8E5391DE13E918203C5E94F79345C97F58E98758D",
+  feeds: [
+    "http://tabi-labo.com/feed/",
+    "http://japanese.engadget.com/rss.xml",
+    "http://feed.rssad.jp/rss/gigazine/rss_atom"
+  ]
+
+config :exq,
+  host: "localhost",
+  port: 6379,
+  namespace: "exq"
+
