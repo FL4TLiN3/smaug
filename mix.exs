@@ -37,6 +37,7 @@ defmodule Smaug.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:cowboy, "~> 1.0"},
      {:oauth2, "~> 0.3"},
+     {:exq, "~> 0.3.0"},
      {:timex, "~> 0.19.2"},
      {:timex_ecto, "~> 0.5.0"}]
   end
