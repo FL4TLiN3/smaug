@@ -17,7 +17,6 @@
       <td><%= feed.name %></td>
       <td><%= feed.url %></td>
       <td><%= feed.last_fetched_at %></td>
-      <td><%= feed.etag %></td>
 
       <td class="text-right buttons">
         <%= link "Show", to: feed_path(@conn, :show, feed), class: "btn btn-default btn-xs" %>

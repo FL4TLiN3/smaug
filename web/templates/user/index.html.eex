@@ -5,10 +5,6 @@
     <tr>
       <th>Email</th>
       <th>Name</th>
-      <th>Access secret</th>
-      <th>Access secret generated at</th>
-      <th>Access token</th>
-      <th>Access token expires at</th>
 
       <th></th>
     </tr>
@@ -18,10 +14,6 @@
     <tr>
       <td><%= user.email %></td>
       <td><%= user.name %></td>
-      <td><%= user.access_secret %></td>
-      <td><%= user.access_secret_generated_at %></td>
-      <td><%= user.access_token %></td>
-      <td><%= user.access_token_expires_at %></td>
 
       <td class="text-right buttons">
         <%= link "Show", to: user_path(@conn, :show, user), class: "btn btn-default btn-xs" %>
