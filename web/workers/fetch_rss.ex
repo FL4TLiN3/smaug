@@ -5,10 +5,19 @@ defmodule Smaug.Worker.FetchRss do
   alias Smaug.Story
 
   def perform do
-    feed = Repo.one(from f in Smaug.Feed, order_by: [f.last_fetched_at], limit: 1)
-    body = Feed.get(feed.url).body
+    feed = Repo.one(from f in Smaug.Feed, order_by: [asc: f.last_fetched_at], limit: 1)
+    headers = Feed.head(feed.url).headers
 
-    saveStory body.stories
+    if feed.etag != headers[:ETag] do
+      body = Feed.get(feed.url).body
+      saveStory body.stories
+
+      feed
+      |> Smaug.Feed.changeset(%{
+        etag: headers[:ETag],
+        last_fetched_at: Ecto.DateTime.local})
+      |> Repo.update!
+    end
   end
 
   def saveStory([head|tail]) do
