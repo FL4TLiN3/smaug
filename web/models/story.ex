@@ -3,7 +3,6 @@ defmodule Smaug.Story do
 
   schema "stories" do
     field :title, :string
-    field :author, :string
     field :cover, :string
     field :published_at, Ecto.DateTime
     field :description, :string
@@ -12,7 +11,7 @@ defmodule Smaug.Story do
     timestamps
   end
 
-  @required_fields ~w(title author cover published_at description category_id)
+  @required_fields ~w(title cover published_at description category_id)
   @optional_fields ~w()
 
   @doc """

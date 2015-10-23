@@ -5,7 +5,6 @@
     <tr>
       <th>Category</th>
       <th>Title</th>
-      <th>Author</th>
       <th>Cover</th>
       <th>Published at</th>
       <th>Description</th>
@@ -18,7 +17,6 @@
     <tr>
       <td><%= story.category.name %></td>
       <td><%= story.title %></td>
-      <td><%= story.author %></td>
       <td><%= story.cover %></td>
       <td><%= story.published_at %></td>
       <td><%= String.slice story.description, 0, 30 %></td>

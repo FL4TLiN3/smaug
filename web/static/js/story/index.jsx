@@ -32,7 +32,6 @@ const Story = React.createClass({
           </div>
           <header className="col-md-8 col-md-offset-2">
             <p className="tag">{ this.state.tag }</p>
-            <p className="author">{ this.state.author }</p>
             <h1 className="title">{ this.state.title }</h1>
           </header>
           <p

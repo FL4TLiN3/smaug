@@ -13,11 +13,6 @@
   </li>
 
   <li>
-    <strong>Author:</strong>
-    <%= @story.author %>
-  </li>
-
-  <li>
     <strong>Cover:</strong>
     <%= @story.cover %>
   </li>
