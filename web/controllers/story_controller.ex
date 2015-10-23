@@ -11,6 +11,7 @@ defmodule Smaug.StoryController do
     stories = Story
     |> Story.paging(params)
     |> Story.category(params)
+    |> Story.order(params)
     |> Repo.all
     |> Repo.preload [:category]
 

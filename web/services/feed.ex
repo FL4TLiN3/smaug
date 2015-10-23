@@ -30,7 +30,8 @@ defmodule Smaug.Service.Feed do
                           |> DateFormat.parse!("{RFC1123}")
                           |> DateConvert.to_erlang_datetime
                           |> Ecto.DateTime.from_erl,
-      description:   item |> Floki.find("description") |> Floki.text
+      description:   item |> Floki.find("description") |> Floki.text,
+      category_id:   1
     } end)
 
     feed

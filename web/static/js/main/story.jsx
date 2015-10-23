@@ -16,7 +16,7 @@ const Story = React.createClass({
 
   render: function () {
     let background = {
-      'backgroundImage': 'url("/images/' + this.state.cover + '")'
+      'backgroundImage': 'url("' + this.state.cover + '")'
     };
 
     return (

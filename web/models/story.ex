@@ -48,4 +48,8 @@ defmodule Smaug.Story do
   def paging(query, _params) do
     from s in query, limit: 100, offset: 0
   end
+
+  def order(query, _) do
+    from s in query, order_by: [desc: s.published_at]
+  end
 end

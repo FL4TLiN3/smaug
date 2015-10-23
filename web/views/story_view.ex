@@ -12,7 +12,6 @@ defmodule Smaug.StoryView do
   def render("story.json", %{story: story}) do
     %{id: story.id,
       title: story.title,
-      author: story.author,
       cover: story.cover,
       category: %{
         id: story.category.id,
