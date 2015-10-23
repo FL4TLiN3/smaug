@@ -20,7 +20,7 @@ defmodule Smaug.Mixfile do
     [mod: {Smaug, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
                     :phoenix_ecto, :mariaex, :oauth2, :tzdata,
-                    :exq]]
+                    :exq, :httpotion]]
   end
 
   # Specifies which paths to compile per environment.
@@ -39,6 +39,9 @@ defmodule Smaug.Mixfile do
      {:cowboy, "~> 1.0"},
      {:oauth2, "~> 0.3"},
      {:exq, "~> 0.3.0"},
+     {:ibrowse, github: "cmullaparthi/ibrowse", tag: "v4.1.2"},
+     {:httpotion, "~> 2.1.0"},
+     {:floki, "~> 0.6"},
      {:timex, "~> 0.19.2"},
      {:timex_ecto, "~> 0.5.0"}]
   end
