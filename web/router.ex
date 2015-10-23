@@ -48,6 +48,7 @@ defmodule Smaug.Router do
     resources "/stories", StoryController
     resources "/categories", CategoryController
     resources "/users", UserController
+    resources "/feeds", FeedController
   end
 
   scope "/api", Smaug do
