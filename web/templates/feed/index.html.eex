@@ -6,7 +6,6 @@
       <th>Name</th>
       <th>Url</th>
       <th>Last fetched at</th>
-      <th>Etag</th>
 
       <th></th>
     </tr>

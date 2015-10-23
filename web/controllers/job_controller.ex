@@ -22,8 +22,8 @@ defmodule Smaug.JobController do
     })
   end
 
-  def create(conn, _params) do
-    {:ok, jid} = Exq.enqueue(:exq_enqueuer, "default", Smaug.Worker.FetchRss, [])
+  def create(conn, %{"job_name" =>  job_name}) do
+    {:ok, jid} = Exq.enqueue(:exq_enqueuer, "default", job_name, [])
     render(conn, :show, job: %{id: jid})
   end
 
