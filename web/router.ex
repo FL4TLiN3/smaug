@@ -21,6 +21,12 @@ defmodule Smaug.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug Smaug.Plug.AllowAccess, [:all]
+  end
+
+  pipeline :api_internal do
+    plug :accepts, ["json"]
+    plug Smaug.Plug.AllowAccess, [:internal]
   end
 
   scope "/", Smaug do
@@ -54,8 +60,13 @@ defmodule Smaug.Router do
   scope "/api", Smaug do
     pipe_through :api
 
+    resources "/stories", StoryController, only: [:index, :show]
+  end
+
+  scope "/api_internal", Smaug do
+    pipe_through :api_internal
+
     get  "/job/stats", JobController, :stats
     post "/job", JobController, :create
-    resources "/stories", StoryController, only: [:index, :show]
   end
 end
