@@ -4,6 +4,7 @@ defmodule Smaug.Story do
   schema "stories" do
     field :title, :string
     field :cover, :string
+    field :original_link, :string
     field :published_at, Ecto.DateTime
     field :description, :string
 
@@ -11,8 +12,8 @@ defmodule Smaug.Story do
     timestamps
   end
 
-  @required_fields ~w(title cover published_at description category_id)
-  @optional_fields ~w()
+  @required_fields ~w(title)
+  @optional_fields ~w(cover original_link published_at description category_id)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -45,6 +46,6 @@ defmodule Smaug.Story do
   end
 
   def paging(query, _params) do
-    from s in query, limit: 20, offset: 0
+    from s in query, limit: 100, offset: 0
   end
 end
