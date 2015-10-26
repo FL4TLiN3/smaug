@@ -2,7 +2,7 @@ defmodule Smaug.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "rooms:*", Smaug.RoomChannel
+  channel "rooms:*", Smaug.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
